@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="font-awesome-4.7.0 - Copy/css/font-awesome.css"
+    />
+    <link rel="stylesheet" href="/schReg.css" />
+    <title>School reg</title>
+  </head>
+  <body>
+    <h1 id="schReg" style="text-decoration: underline">
+      STUDENT REGISTRATION FORM</h1
+    >
+    <h2 style="text-align: center; color: #0a4166"> Click to Login </h2>
+    <div class="logForm">
+      <form class="inputForm" style="margin: 15px">
+        <label for="fname">FIRST NAME:</label><br />
+        <input
+          class="input"
+          type="text"
+          id="fname"
+          name="fname"
+          placeholder="First name"
+          
+        />
+        (max 30 characters a-z and Z-A) <br />
+
+        <label for="lname">LAST NAME:</label><br />
+        <input
+          class="input"
+          type="text"
+          id="lname"
+          name="lname"
+          placeholder="Last name"
+          
+        />
+        (max 30 characters a-z and Z-A) <br />
+
+        <label for="email">EMAIL ID:</label><br />
+        <input
+          class="input"
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email"
+          
+        />
+        <br />
+
+        <label for="mobile number">PHONE NO:</label><br />
+        <input
+          class="input"
+          type="tel"
+          id="phone"
+          name="phoneNo"
+          placeholder="Enter your number"
+         
+        />
+        (10 digit number)
+        <br />
+        <label for="gender"> GENDER: </label>
+        <div class="radio">
+          <label for="male">Male</label>
+          <input
+            class="input"
+            type="radio"
+            id="male"
+            name="gender"
+            value="male"
+            
+          />
+          <label for="female">Female</label>
+          <input
+            class="input"
+            type="radio"
+            id="female"
+            name="gender"
+            value="female"
+           
+          />
+          <label for="other">Other</label>
+          <input
+            class="input"
+            type="radio"
+            id="other"
+            name="gender"
+            value="other"
+            
+          />
+        </div>
+        <br />
+        <div class="add" style="margin-top: 35px; display: flex">
+          <label for="address">ADDRESS:</label>
+          <input 
+          class="addr input" 
+          type="text" 
+          id="address" 
+       
+          />
+        </div>
+        <br />
+
+        <label for="city"> CITY: </label>
+        <div class="cty" style="margin-left: 121px; display: inline">
+          <input
+            class="cty1 input"
+            style="margin-bottom: 33px"
+            type="text"
+            id="city"
+            name="city"
+           
+          /> </div
+        ><br />
+
+        <label for="state"> STATE: </label>
+        <div class="state" style="margin-left: 110px; display: inline">
+          <input
+            class="st1 input"
+            style="margin-bottom: 30px"
+            type="text"
+            id="state"
+            name="state"
+            
+          /> </div
+        ><br />
+
+        <label for="country"> COUNTRY: </label>
+        <div class="country" style="margin-left: 82px; display: inline">
+          <input
+            class="ctry input"
+            style="margin-bottom: 30px"
+            type="text"
+            id="country"
+            name="country"
+            
+          />
+        </div>
+        <br /><br />
+
+        <div
+          class="end"
+          style="
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-left: 120px;
+          "
+        >
+          <input class="submit" type="submit" value="Submit" 
+          
+          />
+          <input type="reset" />
+        </div>
+      </form>
+
+      <script>
+
+                let fname = document.querySelector("#fname");
+                let lastname = document.querySelector("#lname");
+                let email = document.querySelector("#email");
+                let phoneNo = document.querySelector("#phone");
+                let gender = document.getElementsByName("gender");
+                let address = document.querySelector("#address")
+                let city = document.querySelector("#city");
+                let state = document.querySelector("#state");
+                let country = document.querySelector("#country");
+                let submit = document.querySelector(".submit");
+                let studentInput = document.getElementsByClassName("input")
+          
+                submit.addEventListener("click", (e) => {
+                  e.preventDefault();
+        for (let index = 0; index < gender.length; index++) {
+         if (gender[index].checked) {
+           gender = gender[index].value;
+
+        };
+        
+        console.log(gender);
+      };
+        const objInput = {
+          fname: fname.value,
+          lname: lastname.value,
+          email: email.value,
+          phoneNo: phoneNo.value,
+          studentGender: gender,
+          Address: address,
+          city: city.value,
+          state: state.value,
+          country: country.value,
+        };
+
+                  let studId = objInput.fname + objInput.lname + Math.floor(Math.random() * 101);
+                  console.log(studId);
+
+                  alert("Your Student ID is" + " " + studId);
+                  localStorage.setItem(studId, JSON.stringify(objInput));
+                  let res = JSON.parse(localStorage.getItem(studId));
+                  console.log(res);
+                  
+       window.location.href = 'form.html';
+      
+     })
+      
+
+
+        
+      </script>
+  </body>
+</html>

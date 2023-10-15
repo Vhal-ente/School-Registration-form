@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/schReg.css" />
+    <title>form</title>
+</head>
+<body>
+    <div>
+    <h1 id="schReg" style="text-decoration: underline;">REGISTRATION FORM CHECK</h1>
+        </div>
+    <div class="logForm">
+      <form  style="margin-top: 5%;
+padding-left: 5%;">
+        <input
+         class="input" 
+        style="padding: 10px 55px;"
+        type="text" 
+        id="Studentid" 
+        name="Studentid" 
+        placeholder="Enter your Student ID" 
+        required 
+
+        />
+        <br><br>
+        <div 
+        class="submit" 
+        style="display: flex; 
+        justify-content: center;
+        margin-bottom: 50px
+        ">
+
+        <input 
+        class="submit" 
+        type="submit" 
+        value="Submit" 
+        />
+      </div>    
+    </form>
+    <br><br>
+
+    <div class="studentInfo">
+
+    </div> 
+
+
+
+
+
+<script>
+     let studentID = document.querySelector("#Studentid");
+    let submit = document.querySelector(".submit");
+    submit.addEventListener("click", (e)=> {
+        e.preventDefault();
+    let reg =  studentID.value;   
+    if (localStorage.getItem(reg)  === null) {
+        alert("User not found")
+    }
+    else{
+        
+        let studInfo = document.querySelector(".studentInfo")
+        
+        let res = JSON.parse(localStorage.getItem(reg));
+        studInfo.innerHTML+= `<div class="studentInfo"><p>First Name:${res.fname}</p>
+            <p>Last Name: ${res.lname}</p>
+            <p>Email: ${res.email}</p>
+            <p>Phone number: ${res.phoneNo}</p>
+            <p>Gender: ${res.studentgender}</p>
+            <p>Address: ${res.Address}</p>
+            <p>City: ${res.city}</p>
+            <p>State: ${res.state}</p>
+            <p>Country: ${res.country}</p>
+            </div>`;
+                    console.log(res);
+            
+
+     console.log("found it");    
+     studentID.value = ""   
+}
+   
+    })
+</script>
+</body>
+</html>
